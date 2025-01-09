@@ -1,7 +1,7 @@
-import prismaClient from "../prisma";
+import prismaClient from "../../prisma";
 
 class CreateThoughtService {
-  async createThoughtService({ author, saying }: CreateThoughtProps) {
+  async createThought({ author, saying }: CreateThoughtProps) {
     if (!author || !saying) {
       throw new Error("Missing required fields");
     }
@@ -13,7 +13,6 @@ class CreateThoughtService {
       },
     });
 
-    console.log(`${author} says '${saying}'`);
     return thought;
   }
 }
