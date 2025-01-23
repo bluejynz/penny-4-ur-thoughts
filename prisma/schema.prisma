@@ -14,11 +14,22 @@ datasource db {
 }
 
 model Thought {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  author String
-  saying String
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  author     String
+  saying     String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   @@map("thoughts")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
 }
