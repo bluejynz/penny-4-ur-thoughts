@@ -9,6 +9,8 @@ const app = fastify({ logger: true });
 app.setErrorHandler((error, request, reply) => {
     if (error.name === "NotFoundError") {
         reply.code(404).send({ message: error.message });
+    } else if (error.name === "UnauthorizedError") {
+        reply.code(401).send({ message: error.message });
     } else {
         reply.code(400).send({ message: error.message });
     }
